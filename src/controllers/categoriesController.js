@@ -4,7 +4,7 @@ import connection from '../database/database.js'
 export async function listCategories(req,res){
     try {
         const categories = await connection.query('SELECT * FROM categories;');
-        res.status(STATUS_CODE.CREATED).send(categories.rows);       
+        res.status(STATUS_CODE.OK).send(categories.rows);       
     } catch (error) {
         res.sendStatus(STATUS_CODE.SERVER_ERROR);
         console.log(error);       

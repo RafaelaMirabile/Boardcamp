@@ -8,7 +8,7 @@ export default async function validateGame(req,res,next){
     const joiValidation = gameSchema.validate(newGame,{abortEarly: false});
 
     if(joiValidation.error){
-        return res.sendStatus(STATUS_CODE.BAD_REQUEST)
+        return res.sendStatus(STATUS_CODE.BAD_REQUEST);
     }
     try {
         const categories = await connection.query('SELECT * FROM categories WHERE id=$1', [newGame.categoryId]);
